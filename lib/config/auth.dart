@@ -1,9 +1,9 @@
-import 'package:vania_sample/app/models/user.dart';
+import 'package:vania_sample/app/models/users.dart';
 
 Map<String, dynamic> authConfig = {
   'guards': {
     'default': {
-      'provider': User(),
+      'provider': Users(),
     }
   }
 };

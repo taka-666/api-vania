@@ -1,21 +1,24 @@
 import 'package:vania/vania.dart';
 
-class CreateProductTable extends Migration {
+class CreateProductsTable extends Migration {
   @override
   Future<void> up() async {
     super.up();
-    await createTableNotExists('product', () {
-      id();
-      string('name', length: 50);
-      text("description");
-      decimal('price', precision: 10, scale: 2);
+    await createTableNotExists('products', () {
+      primary('prod_id');
+      bigIncrements('prod_id');
+      bigInt('vend_id', unsigned: true);
+      string('prod_name', length: 25);
+      integer('prod_price');
+      text('prod_desc');
       timeStamps();
+      foreign('vend_id', 'vendors', 'vend_id');
     });
   }
 
   @override
   Future<void> down() async {
     super.down();
-    await dropIfExists('product');
+    await dropIfExists('products');
   }
 }

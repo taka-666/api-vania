@@ -1,15 +1,24 @@
+import 'package:vania_sample/app/http/controllers/auth_controller.dart';
 import 'package:vania/vania.dart';
-import 'package:vania_sample/app/http/controllers/product_controller.dart';
+import 'package:vania_sample/app/http/controllers/home_controller.dart';
 
 class ApiRoute implements Route {
   @override
   void register() {
-    // Base RouterPrefix
+    /// Base RoutePrefix
     Router.basePrefix('api');
 
-    Router.post('/product', productController.store);
-    Router.get('/product', productController.show);
-    Router.put('/product/{id}', productController.update);
-    Router.delete('/product/{id}', productController.destroy);
+    Router.group(() {
+      Router.get("/home", homeController.index);
+      Router.get("/show", homeController.show);
+      Router.put("/update/{id}", homeController.update);
+      Router.post("/create", homeController.create);
+      Router.delete("/destroy/{id}", homeController.destroy);
+    }, prefix: 'crud');
+
+    Router.group(() {
+      Router.post('register', authController.register);
+      Router.post('login', authController.login);
+    }, prefix: 'auth');
   }
 }
