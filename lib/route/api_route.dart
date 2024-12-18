@@ -1,29 +1,15 @@
 import 'package:vania/vania.dart';
-import 'package:vania_sample/app/http/controllers/home_controller.dart';
-import 'package:vania_sample/app/http/middleware/authenticate.dart';
-import 'package:vania_sample/app/http/middleware/home_middleware.dart';
-import 'package:vania_sample/app/http/middleware/error_response_middleware.dart';
+import 'package:vania_sample/app/http/controllers/product_controller.dart';
 
 class ApiRoute implements Route {
   @override
   void register() {
-    /// Base RoutePrefix
+    // Base RouterPrefix
     Router.basePrefix('api');
 
-    Router.get("/home", homeController.index);
-
-    Router.get("/hello-world", () {
-      return Response.html('Hello World');
-    }).middleware([HomeMiddleware()]);
-
-    // Return error code 400
-    Router.get('wrong-request',
-            () => Response.json({'message': 'Hi wrong request'}))
-        .middleware([ErrorResponseMiddleware()]);
-
-    // Return Authenticated user data
-    Router.get("/user", () {
-      return Response.json(Auth().user());
-    }).middleware([AuthenticateMiddleware()]);
+    Router.post('/product', productController.store);
+    Router.get('/product', productController.show);
+    Router.put('/product/{id}', productController.update);
+    Router.delete('/product/{id}', productController.destroy);
   }
 }
