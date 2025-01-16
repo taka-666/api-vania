@@ -21,6 +21,6 @@ YouTube Video [Quick Start](https://www.youtube.com/watch?v=k8ol0F4bDKs)
 
 #Respon Api Postman Update Product
 ![Alt text](storage/update-product.png)
-
+#Respon Api Postman Delete Product
 #Respon Api Postman Delete Product
 ![Alt text](storage/delete-product.png)
