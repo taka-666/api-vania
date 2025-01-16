@@ -16,8 +16,8 @@ class ApiRoute implements Route {
       Router.delete("/destroy/{id}", homeController.destroy);
     }, prefix: 'crud');
 
+    Router.post('register', authController.register);
     Router.group(() {
-      Router.post('register', authController.register);
       Router.post('login', authController.login);
     }, prefix: 'auth');
   }
