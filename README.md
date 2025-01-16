@@ -1,5 +1,5 @@
 
-# Vania Dart backend framework
+# Vania Dart backend
 
 ![Vania](https://vdart.dev/img/logo.png)
 
